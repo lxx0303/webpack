@@ -42,3 +42,7 @@ const fn = () => {
     console.log('你好');
 }
 console.log(fn);
+
+
+// 引入vue
+import App from './app.vue'
