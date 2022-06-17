@@ -1,3 +1,4 @@
+const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { join } = require('path');
 const { Template } = require('webpack');
@@ -15,7 +16,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: join(__dirname, 'public/index.html')
-        })
+        }),
+        // 请确保引入这个插件！
+        new VueLoaderPlugin()
     ],
     devServer: {
         open: true,
@@ -54,6 +57,10 @@ module.exports = {
             }, {
                 test: /\.js$/i,
                 use: ["babel-loader"]
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
             }
         ]
     }
