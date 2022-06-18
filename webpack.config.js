@@ -56,6 +56,7 @@ module.exports = {
                 }
             }, {
                 test: /\.js$/i,
+                // exclude: path.join(__dirname, 'node_modules'),
                 use: ["babel-loader"]
             },
             {
