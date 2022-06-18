@@ -2,6 +2,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { join } = require('path');
 const { Template } = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: 'production',
@@ -18,7 +19,8 @@ module.exports = {
             template: join(__dirname, 'public/index.html')
         }),
         // 请确保引入这个插件！
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new MiniCssExtractPlugin()
     ],
     devServer: {
         open: true,
@@ -62,6 +64,10 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
             }
         ]
     }
